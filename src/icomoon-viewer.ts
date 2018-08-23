@@ -1,10 +1,11 @@
 import { window, TextDocument, workspace, Uri } from 'vscode';
 import * as path from 'path';
 import * as glob from 'glob';
+import { Icon } from './icon';
 
 export class IcomoonViewer {
     private languages = ['css', 'scss', 'less'];
-    private icons: string[];
+    private icons: Icon[];
 
     public update(): void {
 
@@ -21,18 +22,18 @@ export class IcomoonViewer {
         }
     }
 
-    private extractIconsFromDoc(doc: TextDocument): string[] {
-        let icons = [];
+    private extractIconsFromDoc(doc: TextDocument): Icon[] {
+        let icons: Icon[] = [];
         let docContent = doc.getText();
-        const reg = /(unicode="&#x)(.+)(;")/g;
+        const reg = /(unicode="&#x)(.+)(;")(.+)(d=")(.+)(")/g;
         let match;
 
         while ((match = reg.exec(docContent))) {
-            if (!match.length || !match[2]) {
+            if (!match.length || !match[2] || !match[6]) {
                 return;
             }
 
-            icons.push(match[2]);
+            icons.push(new Icon(match[2], match[6]));
          }
 
         return icons;
