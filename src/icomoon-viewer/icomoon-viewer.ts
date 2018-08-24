@@ -1,5 +1,4 @@
-import { window, TextDocument, workspace, Uri, Range, OverviewRulerLane } from 'vscode';
-import * as path from 'path';
+import { window, TextDocument, workspace, Uri, Range } from 'vscode';
 import * as glob from 'glob';
 import { Icon } from './icon';
 
@@ -78,12 +77,11 @@ export class IcomoonViewer {
     private showIcons(): void {
         // TODO: Separate in functions
         this.icons.forEach(icon => {
-            const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -64 1024 1024"><path fill="#B5B5B5" d="${icon.content}"/></svg>`;
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 64 1024 1024"><path transform="rotate(180 512 512) scale(.9)" fill="#FFFFFF" d="${icon.content}"/></svg>`;
             const renderOptions = {
                 before: {
                     contentIconPath: Uri.parse(`data:image/svg+xml;utf8,${encodeURI(svg)}`),
-                    width: '0.7em',
-                    height: '0.7em',
+                    width: '1em',
                 },
             };
 

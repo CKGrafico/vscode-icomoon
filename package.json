@@ -1,8 +1,8 @@
 {
-    "name": "icomoon",
-    "displayName": "Icomoon",
+    "name": "icomoon-viewer",
+    "displayName": "Icomoon Viewer",
     "description": "View your icomoon icons in real time",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "CKGrafico",
     "engines": {
         "vscode": "^1.26.0"
@@ -15,14 +15,6 @@
         "workspaceContains:**/Icomoon.svg"
     ],
     "main": "./out/extension",
-    "contributes": {
-        "commands": [
-            {
-                "command": "extension.sayHello",
-                "title": "Hello World"
-            }
-        ]
-    },
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
@@ -36,5 +28,9 @@
         "tslint": "^5.8.0",
         "@types/node": "^8.10.25",
         "@types/mocha": "^2.2.42"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/CKGrafico/vscode-icomoon.git"
     }
 }
