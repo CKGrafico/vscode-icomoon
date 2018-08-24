@@ -1,4 +1,4 @@
-import { window, TextDocument, workspace, Uri, Range } from 'vscode';
+import { window, TextDocument, workspace, Uri, Range, OverviewRulerLane } from 'vscode';
 import * as path from 'path';
 import * as glob from 'glob';
 import { Icon } from './icon';
@@ -77,21 +77,14 @@ export class IcomoonViewer {
 
     private showIcons(): void {
         // TODO: Separate in functions
-        const defaultRenderOptions = {
-            after: {
-                contentText: ' ',
-                margin: '0.1em 0.2em 0 0.2em',
-                width: '0.7em',
-                height: '0.7em',
-                backgroundColor: 'red',
-                borderRadius: '50%'
-            }
-        };
-
         this.icons.forEach(icon => {
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -64 1024 1024"><path fill="#B5B5B5" d="${icon.content}"/></svg>`;
             const renderOptions = {
-                ...defaultRenderOptions,
-
+                before: {
+                    contentIconPath: Uri.parse(`data:image/svg+xml;utf8,${encodeURI(svg)}`),
+                    width: '0.7em',
+                    height: '0.7em',
+                },
             };
 
             const decoration = window.createTextEditorDecorationType(renderOptions);
