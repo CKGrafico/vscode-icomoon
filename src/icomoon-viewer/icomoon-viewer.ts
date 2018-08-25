@@ -76,7 +76,7 @@ export class IcomoonViewer {
     private extractIconsFromCSS(icon: Icon): Range[] {
         let ranges: Range[] = [];
         let docContent = this.document.getText();
-        const reg = new RegExp(`('|")${icon.code}('|");?`, 'g');
+        const reg = new RegExp(`('|")(\\\\?)${icon.code}('|");?`, 'g');
         let match;
 
         while ((match = reg.exec(docContent))) {

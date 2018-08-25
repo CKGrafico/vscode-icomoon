@@ -1,0 +1,20 @@
+.icon {
+  &-chrome:before {
+    content: '\ead9';
+  }
+  &-firefox:before {
+    content: '\eada';
+  }
+  &-IE:before {
+    content: '\eadb';
+  }
+  &-edge:before {
+    content: '\eadc';
+  }
+  &-safari:before {
+    content: '\eadd';
+  }
+  &-opera:before {
+    content: '\eade';
+  }
+}

@@ -2,7 +2,7 @@
     "name": "icomoon-viewer",
     "displayName": "Icomoon Viewer",
     "description": "View your icomoon icons in real time",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "publisher": "CKGrafico",
     "engines": {
         "vscode": "^1.26.0"
