@@ -1,8 +1,8 @@
 {
     "name": "icomoon-viewer",
     "displayName": "Icomoon Viewer",
-    "description": "View your icomoon icons in real time",
-    "version": "0.0.3",
+    "description": "Preview your Icomoon icons into your style files",
+    "version": "0.5.0",
     "publisher": "CKGrafico",
     "engines": {
         "vscode": "^1.26.0"
