@@ -99,9 +99,8 @@ export class IcomoonViewer {
     }
 
     private async getIcons(): Promise<{}> {
-        // TODO: Icomoon and icomoon
         return new Promise((resolve, reject) => {
-            glob(`${workspace.rootPath}/**/icomoon.svg` , {}, async (error, files) => {
+            glob(`${workspace.rootPath}/**/*icomoon*.svg` , { nocase: true }, async (error, files) => {
                 if (error || !files || !files.length || !files[0]) {
                     reject();
                 }

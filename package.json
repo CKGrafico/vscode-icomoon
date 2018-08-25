@@ -2,7 +2,7 @@
     "name": "icomoon-viewer",
     "displayName": "Icomoon Viewer",
     "description": "Preview your Icomoon icons into your style files",
-    "version": "0.5.3",
+    "version": "0.6.0",
     "publisher": "CKGrafico",
     "engines": {
         "vscode": "^1.26.0"
@@ -11,10 +11,15 @@
         "Other"
     ],
     "activationEvents": [
-        "workspaceContains:**/icomoon.svg"
+        "workspaceContains:**/*icomoon*.svg"
     ],
     "icon": "assets/icon.png",
-    "keywords": ["Icomoon", "Icomoon icons", "Preview icons css", "Preview icons styles"],
+    "keywords": [
+        "Icomoon",
+        "Icomoon icons",
+        "Preview icons css",
+        "Preview icons styles"
+    ],
     "main": "./out/extension",
     "scripts": {
         "vscode:prepublish": "npm run compile",
@@ -33,5 +38,8 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/CKGrafico/vscode-icomoon.git"
+    },
+    "dependencies": {
+        "glob": "^7.1.2"
     }
 }
