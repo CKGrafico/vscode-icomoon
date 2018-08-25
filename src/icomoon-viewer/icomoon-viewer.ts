@@ -31,8 +31,8 @@ export class IcomoonViewer {
             const renderOptions = {
                 before: {
                     contentIconPath: Uri.parse(`data:image/svg+xml;utf8,${encodeURI(this.svgTemplate(icon))}`),
-                    margin: '0 .1em',
-                    width: '1em',
+                    margin: '0 .1em .1em 0',
+                    width: '1.1em',
                 },
             };
 
@@ -53,7 +53,8 @@ export class IcomoonViewer {
     }
 
     private svgTemplate(icon: Icon): string {
-        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 64 1024 1024"><path transform="rotate(180 512 512) scale(.9)" fill="#FFFFFF" d="${icon.content}"/></svg>`;
+        const size = 1024;
+        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 64 ${size} ${size}"><rect height="${size}" width="${size}" x="0" y="0" fill="rgba(0, 0, 0, .1)" /><path transform="rotate(180 ${size / 2} ${size / 2}) scale(.75) translate(${size * .15} ${size * .2})" fill="rgba(255, 255, 255, .75)" d="${icon.content}"/></svg>`;
     }
 
     private extractIconsFromDoc(doc: TextDocument): Icon[] {
