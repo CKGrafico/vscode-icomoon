@@ -27,6 +27,11 @@ export class IcomoonViewer {
     }
 
     private showIcons(): void {
+        const editor = this.editor as any;
+
+        editor.decorations = editor.decorations || [];
+        editor.decorations.forEach(x => x.dispose());
+
         this.icons.forEach(icon => {
             const renderOptions = {
                 before: {
@@ -44,6 +49,7 @@ export class IcomoonViewer {
             }
 
             this.showDecoration(decoration, ranges);
+            editor.decorations.push(decoration);
         });
     }
 
