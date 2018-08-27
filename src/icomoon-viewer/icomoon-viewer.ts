@@ -60,13 +60,13 @@ export class IcomoonViewer {
 
     private svgTemplate(icon: Icon): string {
         const size = 1024;
-        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 64 ${size} ${size}"><rect height="${size}" width="${size}" x="0" y="0" fill="rgba(0, 0, 0, .1)" /><path transform="rotate(180 ${size / 2} ${size / 2}) scale(.75) translate(${size * .15} ${size * .2})" fill="rgba(255, 255, 255, .75)" d="${icon.content}"/></svg>`;
+        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 64 ${size} ${size}"><rect height="${size}" width="${size}" x="0" y="0" fill="rgba(0, 0, 0, .1)" /><path transform-origin="${size / 2} ${size / 2}" transform="scale(.75 -.75)" fill="rgba(255, 255, 255, .75)" d="${icon.content}"/></svg>`;
     }
 
     private extractIconsFromDoc(doc: TextDocument): Icon[] {
         let icons: Icon[] = [];
         let docContent = doc.getText();
-        const reg = /(unicode="&#x)(.+)(;")(.+)(d=")(.+)(")/g;
+        const reg = /(unicode="&#x)(.*?)(;")(.*?)(d=")(.*?)(")/g;
         let match;
 
         while ((match = reg.exec(docContent))) {
@@ -100,7 +100,7 @@ export class IcomoonViewer {
 
     private async getIcons(): Promise<{}> {
         return new Promise((resolve, reject) => {
-            glob(`${workspace.rootPath}/**/*icomoon*.svg` , { nocase: true }, async (error, files) => {
+            glob(`${workspace.rootPath}/**/*icomoon*.svg`, { ignore: '**/node_modules/**' }, async (error, files) => {
                 if (error || !files || !files.length || !files[0]) {
                     reject();
                 }
